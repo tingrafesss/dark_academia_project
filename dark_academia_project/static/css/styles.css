@@ -1,0 +1,1124 @@
+@font-face {
+  font-family: 'Elisabethische';
+  src: url('../fonts/Elisabethische.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'EBGaramond';
+  src: url('../fonts/EBGaramond-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'PassionsConflictRUS';
+  src: url('../fonts/PassionsConflictRUS-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+:root {
+  --bg-main: #d6c9c0;
+  --bg-panel: rgba(67, 49, 38, 0.9);
+  --bg-panel-soft: rgba(67, 49, 38, 0.9);
+  --bg-footer: #3b2c25;
+  --text-main: #f9f5f0;
+  --text-body: #f5f1ea;
+  --text-muted: #d7cfc6;
+  --accent: #f2d3b0;
+  --accent-soft: rgba(242, 211, 176, 0.3);
+  --max-width: 1200px;
+  --shadow-soft: 0 6px 16px rgba(0, 0, 0, 0.28);
+  --radius-big: 32px;
+  --radius-card: 24px;
+  --transition: 0.25s ease;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: "EBGaramond", "Georgia", serif;
+  background: #b8a79c;
+  color: var(--text-body);
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.page-wrapper {
+  min-height: 100vh;
+  padding-top: 72px;
+}
+
+.hero {
+  margin-top: -8px;
+}
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ----------- ШАПКА ----------- */
+
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: rgba(141, 130, 122, 0.96);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.header-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 12px 24px;
+}
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+.nav-group {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.logo {
+  font-family: "Elisabethische", "Playfair Display", serif;
+  font-size: 32px;
+  letter-spacing: 0.16em;
+  text-transform: lowercase;
+  text-decoration: none;
+  color: #fff;
+  text-align: center;
+}
+
+.nav-link {
+  font-family: "Elisabethische", "Playfair Display", serif;
+  font-size: 19px;
+  text-decoration: none;
+  color: #fdf9f4;
+  padding-bottom: 4px;
+  position: relative;
+  white-space: nowrap;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 1px;
+  background: #fff;
+  transition: width var(--transition);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+.nav-toggle {
+  display: none;
+  border: none;
+  background: none;
+  cursor: pointer;
+  margin-left: 16px;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  border-radius: 999px;
+  background: #fff;
+  margin: 4px 0;
+  transition: transform var(--transition), opacity var(--transition);
+}
+
+.nav-mobile-panel {
+  display: none;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 48px;
+  background: rgba(84, 77, 72, 0.98);
+  padding: 10px 16px 14px;
+}
+
+.nav-mobile-panel a {
+  display: block;
+  padding: 6px 0;
+  font-family: "Elisabethische", "Playfair Display", serif;
+  font-size: 17px;
+  color: #fff;
+  text-decoration: none;
+}
+
+.nav-mobile-panel a + a {
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.nav-mobile-panel.open {
+  display: block;
+}
+
+/* ----------- HERO ----------- */
+
+.hero {
+  position: relative;
+  min-height: 92vh;
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: left;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background-image: url("../img/sobor.png");
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.8);
+  z-index: -2;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.35),
+    rgba(0, 0, 0, 0.65)
+  );
+  z-index: -1;
+}
+
+.hero-inner {
+  width: 100%;
+  max-width: var(--max-width);
+  padding: 40px 24px 60px;
+}
+
+.hero-panel {
+  background: var(--bg-panel-soft);
+  border-radius: var(--radius-big);
+  padding: 44px 52px 32px;
+  box-shadow: var(--shadow-soft);
+  border: 1px solid rgba(0, 0, 0, 0.36);
+}
+
+.hero-title {
+  font-family: "Elisabethische", "Playfair Display", serif;
+  font-size: clamp(32px, 4.6vw, 42px);
+  text-align: center;
+  margin: 0 0 20px;
+}
+
+.hero-lead {
+  font-size: 20px;
+  line-height: 1.7;
+  text-align: center;
+  max-width: 780px;
+  margin: 0 auto 32px;
+}
+
+.hero-links-row {
+  margin-top: 26px;
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+}
+
+.hero-link-out {
+  position: relative;
+  font-size: 19px;
+  color: #fff;
+  text-decoration: none;
+  padding-top: 32px;
+}
+
+.hero-link-out::before {
+  content: "";
+  position: absolute;
+  top: -16px;
+  left: 50%;
+  width: 18px;
+  height: 40px;
+  transform: translateX(-50%);
+  background-image: url("../img/arrow-vertical.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+
+.hero-links {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  margin-top: 24px;
+}
+
+.hero-link {
+  flex: 1;
+  font-size: 19px;
+  text-align: center;
+  text-decoration: none;
+  color: var(--text-main);
+  position: relative;
+  padding-top: 32px;
+}
+
+.hero-link::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 18px;
+  height: 40px;
+  transform: translateX(-50%);
+  background-image: url("../img/arrow-vertical.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.hero-quote {
+  margin-top: 32px;
+  font-size: 20px;
+  text-align: center;
+  color: var(--text-muted);
+  font-family: "PassionsConflictRUS", "EBGaramond", serif;
+}
+
+.arrow-down {
+  display: block;
+  margin: 20px auto 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  position: relative;
+  cursor: pointer;
+}
+
+.arrow-down::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 9px;
+  width: 9px;
+  height: 9px;
+  border-bottom: 2px solid #fff;
+  border-right: 2px solid #fff;
+  transform: translateX(-50%) rotate(45deg);
+}
+
+/* ----------- ЦИТАТА ----------- */
+
+.quote-section {
+  background: #b49f93;
+  padding: 20px 0 14px;
+  color: #3a241b;
+  text-align: center;
+}
+
+.quote-section blockquote {
+  margin: 0 auto;
+  max-width: 900px;
+  font-size: 30px;
+  line-height: 1.7;
+  font-family: "PassionsConflictRUS", "EBGaramond", serif;
+}
+
+/* ----------- КНИГИ (главная) ----------- */
+
+.section-books {
+  background: var(--bg-main);
+  padding: 60px 0 40px;
+  color: #f5f1ea;
+}
+
+.section-title {
+  font-family: "Elisabethische", "Playfair Display", serif;
+  font-size: 36px;
+  text-align: center;
+  color: #40261d;
+  margin: 0 0 32px;
+}
+
+.books-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px;
+}
+
+.book-card {
+  background: #6b5143;
+  border-radius: var(--radius-card);
+  padding: 26px 26px 22px;
+  box-shadow: var(--shadow-soft);
+  color: var(--text-body);
+  position: relative;
+  border: 1px solid rgba(0, 0, 0, 0.28);
+}
+
+.book-card::before {
+  content: "";
+  position: absolute;
+  top: 16px;
+  right: 22px;
+  width: 2px;
+  height: 52px;
+  background: linear-gradient(to bottom, var(--accent), transparent);
+}
+
+.book-card-link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.book-card-link:hover .book-title {
+  text-decoration: underline;
+}
+
+.book-title {
+  font-family: "Elisabethische", "Playfair Display", serif;
+  font-size: 22px;
+  margin: 0 0 6px;
+  text-align: center;
+}
+
+.book-author {
+  font-size: 19px;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.book-content {
+  display: grid;
+  grid-template-columns: 130px minmax(0, 1fr);
+  gap: 18px;
+  align-items: flex-start;
+}
+
+.book-cover {
+  width: 100%;
+  border-radius: 6px;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.5);
+  object-fit: cover;
+  background: #333;
+}
+
+.book-text {
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+.books-notes-row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  margin: 32px auto 0;
+  max-width: 900px;
+  font-size: 20px;
+  color: #4e3125;
+  text-align: center;
+  font-family: "PassionsConflictRUS", "EBGaramond", serif;
+}
+
+.books-layout {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px;
+  margin-top: 26px;
+}
+
+.books-column {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.tone-column,
+.tone-column-bottom {
+  display: flex;
+  align-items: center;
+}
+
+.tone-box-big {
+  width: 100%;
+}
+
+.tone-title {
+  font-family: "Elisabethische", serif;
+  font-size: 22px;
+  margin: 0 0 6px;
+}
+
+.tone-subtitle {
+  font-size: 18px;
+  margin: 0 0 10px;
+}
+
+@media (max-width: 960px) {
+  .books-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.card-link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.card-link:hover h3 {
+  text-decoration: underline;
+}
+
+/* Контейнер для блока "паспорт книги" */
+.book-detail-layout {
+    display: grid;
+    grid-template-columns: 160px 1fr;   /* картинка слева, текст справа */
+    gap: 24px;
+    align-items: flex-start;
+    margin-bottom: 30px;
+}
+
+/* Ограничение размера изображения */
+.book-detail-layout .book-cover {
+    width: 160px;
+    height: auto;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    object-fit: cover;
+}
+
+/* Блок текста справа */
+.book-meta p {
+    font-size: 18px;
+    margin: 6px 0;
+    line-height: 1.4;
+}
+
+/* Для мобильных экранов */
+@media (max-width: 700px) {
+    .book-detail-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .book-detail-layout .book-cover {
+        width: 220px;
+        margin: 0 auto 20px;
+    }
+}
+
+.author-detail-layout {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 24px;
+    margin-bottom: 30px;
+    align-items: flex-start;
+}
+
+.author-photo {
+    width: 180px;
+    border-radius: 6px;
+    object-fit: cover;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.22);
+}
+
+.author-bio p {
+    margin: 8px 0;
+    font-size: 18px;
+    line-height: 1.45;
+}
+
+
+/* Ограничение размера изображения */
+.author-detail-layout .author-cover {
+    width: 160px;
+    height: auto;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    object-fit: cover;
+}
+
+/* Блок текста справа */
+.author-meta p {
+    font-size: 18px;
+    margin: 6px 0;
+    line-height: 1.4;
+}
+
+/* Для мобильных экранов */
+@media (max-width: 700px) {
+    .author-detail-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .author-detail-layout .book-cover {
+        width: 220px;
+        margin: 0 auto 20px;
+    }
+}
+
+@media (max-width: 700px) {
+    .author-detail-layout {
+        grid-template-columns: 1fr;
+    }
+    
+    .author-photo {
+        width: 220px;
+        margin: 0 auto 20px;
+    }
+}
+
+
+/* ----------- БЛОК С ГЕНЕРАТОРОМ НАСТРОЕНИЯ ----------- */
+
+.page-section--tone {
+  background: #cbbab0;
+}
+
+.tone-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 32px;
+}
+
+.tone-block .page-title {
+  text-align: left;
+  margin-bottom: 12px;
+}
+
+.page-title-left {
+  text-align: left;
+}
+
+.page-subtitle-left {
+  text-align: left;
+}
+
+.tone-box {
+  background: rgba(107, 81, 67, 0.92);
+  border-radius: 18px;
+  padding: 18px 20px 16px;
+  box-shadow: var(--shadow-soft);
+  color: var(--text-main);
+}
+
+.tone-text {
+  margin: 0 0 12px;
+  font-size: 18px;
+}
+
+.tone-btn {
+  border: none;
+  background: var(--accent-soft);
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-size: 16px;
+  font-family: "EBGaramond", serif;
+  color: var(--text-main);
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.tone-btn:hover {
+  background: var(--accent);
+  transform: translateY(-1px);
+}
+
+/* ----------- ОБЩИЕ СЕКЦИИ ----------- */
+
+.page-section {
+  padding: 60px 0 60px;
+  background: var(--bg-main);
+  color: #3a261f;
+}
+
+.page-title {
+  font-family: "Elisabethische", "Playfair Display", serif;
+  font-size: 34px;
+  margin: 0 0 20px;
+  text-align: center;
+}
+
+.page-subtitle {
+  max-width: 720px;
+  margin: 0 auto 30px;
+  font-size: 19px;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.page-text-block {
+  max-width: 800px;
+  margin: 0 auto 26px;
+  font-size: 19px;
+  line-height: 1.7;
+}
+
+.page-text-block h2 {
+  font-family: "Elisabethische", "Playfair Display", serif;
+  font-size: 24px;
+  margin-top: 26px;
+}
+
+.list-dash {
+  list-style: none;
+  padding-left: 0;
+}
+
+.list-dash li::before {
+  content: "— ";
+}
+
+/* ----------- КАРТОЧКИ ----------- */
+
+.simple-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 22px;
+  margin-top: 26px;
+}
+
+.simple-card {
+  background: #6b5143;
+  border-radius: 20px;
+  padding: 18px 20px 16px;
+  color: var(--text-body);
+  box-shadow: var(--shadow-soft);
+  border: 1px solid rgba(0, 0, 0, 0.24);
+}
+
+.simple-card h3 {
+  margin: 0 0 6px;
+  font-size: 21px;
+  font-family: "Elisabethische", "Playfair Display", serif;
+}
+
+.simple-card h3 a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.simple-card h3 a:hover {
+  text-decoration: underline;
+}
+
+.simple-card .meta {
+  font-size: 15px;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+
+.simple-card p {
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+/* ----------- НИЖНИЙ БЛОК ----------- */
+
+.section-bottom-call {
+  position: relative;
+  padding: 70px 0 44px;
+  color: var(--text-main);
+  text-align: center;
+  overflow: hidden;
+}
+
+.section-bottom-bg {
+  position: absolute;
+  inset: 0;
+  background-image: url("../img/vid-sverhu-rukopisnoe-lubovnoe-pis-mo-2.jpg");
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.55);
+  z-index: -2;
+}
+
+.section-bottom-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(33, 24, 20, 0.7);
+  z-index: -1;
+}
+
+.section-bottom-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.section-bottom-text {
+  font-size: 21px;
+  line-height: 1.8;
+  max-width: 800px;
+  margin: 0 auto 32px;
+}
+
+.bottom-link {
+  font-family: "Elisabethische", "Playfair Display", serif;
+  font-size: 19px;
+  text-decoration: none;
+  color: var(--text-main);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.7);
+}
+
+/* ----------- ПОДВАЛ ----------- */
+
+.site-footer {
+  background: var(--bg-footer);
+  color: var(--text-muted);
+  padding: 16px 0 18px;
+  font-size: 14px;
+}
+
+.footer-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  align-items: center;
+}
+
+.footer-link {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 15px;
+}
+
+.footer-link:hover {
+  text-decoration: underline;
+}
+
+.navigator-block {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  margin-top: 32px;
+  padding-top: 24px;
+}
+
+.navigator-list a {
+  color: #3a261f;
+  text-decoration: underline;
+}
+
+.navigator-list a:hover {
+  text-decoration: none;
+}
+
+.playlist-layout {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+  margin: 24px 0 8px;
+}
+
+.playlist-column h3 {
+  font-family: "Elisabethische", serif;
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+
+.playlist-embed {
+  background: #6a4839;
+  border-radius: 18px;
+  padding: 14px;
+  box-shadow: 0 10px 22px rgba(0,0,0,0.2);
+  min-height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.playlist-embed iframe {
+  width: 100%;
+  border-radius: 12px;
+}
+
+.playlist-placeholder {
+  color: #fdf9f4;
+  font-size: 14px;
+  text-align: center;
+}
+
+.btn-primary {
+  display: inline-block;
+  padding: 10px 18px;
+  border-radius: 999px;
+  background: #6a4839;
+  color: #fdf9f4;
+  text-decoration: none;
+  font-size: 15px;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.25);
+}
+
+.btn-primary:hover {
+  filter: brightness(1.05);
+}
+
+.playlist-note {
+  font-size: 13px;
+  opacity: 0.8;
+  margin-top: 6px;
+}
+
+.qr-box {
+  background: #f1e1d5;
+  border-radius: 18px;
+  padding: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.qr-image {
+  max-width: 140px;
+  height: auto;
+}
+
+
+/* ----------- АДАПТИВ ----------- */
+
+@media (max-width: 960px) {
+  .hero-panel {
+    padding: 34px 26px 24px;
+  }
+  .hero-links {
+    flex-direction: column;
+  }
+  .books-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .book-content {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .books-notes-row {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .tone-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 800px) {
+  .nav-group {
+    display: none;
+  }
+  .logo {
+    font-size: 24px;
+  }
+  .nav-toggle {
+    display: block;
+  }
+  .hero {
+    min-height: 80vh;
+  }
+  .hero-panel {
+    border-radius: 24px;
+  }
+}
+
+@media (max-width: 600px) {
+  .page-wrapper {
+    padding-top: 72px;
+  }
+  .hero-panel {
+    padding: 28px 18px 20px;
+  }
+  .hero-lead,
+  .book-text,
+  .page-text-block,
+  .page-subtitle,
+  .section-bottom-text,
+  .books-notes-row {
+    font-size: 17px;
+  }
+  .section-title {
+    font-size: 30px;
+  }
+
+}
+
+/* ----------- ПЛЕЙЛИСТ ----------- */
+
+.playlist-container {
+    margin: 2rem 0;
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    background: #1a1a1a;
+}
+
+.playlist-container iframe {
+    display: block;
+    width: 100%;
+    height: 450px;
+    border: none;
+}
+
+/* Адаптив для мобильных */
+@media (max-width: 700px) {
+    .playlist-container iframe {
+        height: 350px;
+    }
+}
+
+/* ----------- ГЛОБАЛЬНЫЙ ПЛЕЕР (ВСЕГДА ВНИЗУ) ----------- */
+
+.global-player {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: #1a1a1a;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.global-player-container iframe {
+    display: block;
+    width: 100%;
+    height: 80px;
+    border: none;
+}
+
+/* Добавляем отступ для основного контента, чтобы он не прятался за плеером */
+main {
+    margin-bottom: 100px;
+}
+
+@media (max-width: 700px) {
+    main {
+        margin-bottom: 85px;
+    }
+}
+
+/* ---------- ПЛАВАЮЩАЯ КНОПКА И ПЛЕЕР ---------- */
+
+.music-float-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1001;
+    background: #6a4839;
+    border: none;
+    border-radius: 40px;
+    padding: 12px 20px;
+    font-family: "EBGaramond", serif;
+    font-size: 15px;
+    font-weight: 500;
+    color: #fdf9f4;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    backdrop-filter: blur(4px);
+}
+
+.music-float-btn:hover {
+    background: #8b5e4b;
+    transform: scale(1.05);
+}
+
+.music-float-btn.active {
+    background: #3b2c25;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+/* Плеер */
+.music-player {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: #1a1a1a;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.4);
+    animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+.music-player-inner iframe {
+    display: block;
+    width: 100%;
+    height: 80px;
+    border: none;
+}
+
+/* Отступ для подвала, когда плеер открыт */
+body.player-open .site-footer {
+    padding-bottom: 100px;
+}
+
+/* Мобильная версия */
+@media (max-width: 700px) {
+    .music-float-btn {
+        padding: 8px 14px;
+        font-size: 12px;
+        bottom: 15px;
+        right: 15px;
+    }
+    
+    .music-player-inner iframe {
+        height: 65px;
+    }
+    
+    body.player-open .site-footer {
+        padding-bottom: 85px;
+    }
+}
+
+/* Фиксируем подвал внизу на коротких страницах */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1;
+}
+
+.site-footer {
+    margin-top: auto;
+}
