@@ -5,7 +5,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-dark-academia-test-key'
 
-DEBUG = False
+DEBUG = True
 ALLOWED_HOSTS = ['*']  # Временно разрешаем все домены
 
 INSTALLED_APPS = [
