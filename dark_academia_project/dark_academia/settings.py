@@ -1,10 +1,12 @@
 from pathlib import Path
+import os
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-dark-academia-test-key'
-DEBUG = True
-ALLOWED_HOSTS = []
+
+DEBUG = False
+ALLOWED_HOSTS = ['*']  # Временно разрешаем все домены
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -18,6 +20,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',  # ДОБАВИТЬ для статики
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -60,9 +63,12 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_TZ = True
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'  # добавил слеш в начале
+STATIC_ROOT = BASE_DIR / 'staticfiles'  # ДОБАВИТЬ — папка для собранной статики
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
