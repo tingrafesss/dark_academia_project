@@ -1,0 +1,152 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}dark academia — эстетика знания и тайн{% endblock %}
+
+{% block content %}
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+
+  <div class="hero-inner">
+    <div class="hero-panel">
+      <h1 class="hero-title">dark academia — эстетика знания и тайн</h1>
+      <p class="hero-lead">
+        Погрузитесь в атмосферу университетских коридоров, классической литературы и
+        философских размышлений. Узнайте о жанре, который сочетает в себе мрачную романтику
+        и страсть к знаниям.
+      </p>
+    </div>
+
+    <div class="hero-links-row">
+      <a href="{% url 'about' %}" class="hero-link-out">Что такое Dark Academia?</a>
+      <a href="{% url 'about' %}#features" class="hero-link-out">Ключевые особенности жанра</a>
+    </div>
+
+    <a href="#cult-books" class="arrow-down"></a>
+  </div>
+</section>
+
+<section class="quote-section">
+  <blockquote>
+    <p>«Красота редко несет покой и утешение. Напротив. Подлинная красота всегда тревожит» — Джулиан Морроу</p>
+  </blockquote>
+</section>
+
+<section class="section-books" id="cult-books">
+  <div class="container">
+    <h2 class="section-title">Книги в жанре dark academia</h2>
+
+    <div class="books-layout">
+      <!-- Левая колонка сверху: Тайная история + Если бы мы были злодеями -->
+      <div class="books-column">
+        <article class="book-card">
+          <a href="{% url 'book_taina' %}" class="book-card-link">
+            <h3 class="book-title">“Тайная история”</h3>
+            <div class="book-author">Донна Тартт</div>
+            <div class="book-content">
+              <img src="{% static 'img/taina-istoria.jpg' %}" alt="Тайная история" class="book-cover">
+              <p class="book-text">
+                Загадочный мир элитного колледжа, где группа студентов увлечена
+                древней философией и тайнами, способными разрушить их жизни. Мрачная атмосфера,
+                предательство и опасные секреты — настоящая классика dark academia.
+              </p>
+            </div>
+          </a>
+        </article>
+
+        <article class="book-card">
+          <a href="{% url 'book_zlodei' %}" class="book-card-link">
+            <h3 class="book-title">“Если бы мы были злодеями”</h3>
+            <div class="book-author">М.Л. Рио</div>
+            <div class="book-content">
+              <img src="{% static 'img/esli-by-my-byli-zlodeyami.jpg' %}" alt="Если бы мы были злодеями" class="book-cover">
+              <p class="book-text">
+                Психологический триллер о студентах-актёрах, чьи страсти и амбиции приводят
+                к трагедии. Игра слова и теней, где линия между дружбой и враждой исчезает,
+                а правда становится оружием.
+              </p>
+            </div>
+          </a>
+        </article>
+      </div>
+
+      <!-- Правая колонка сверху: случайная цитата -->
+      <div class="tone-column">
+        <div class="tone-box tone-box-big">
+          <h3 class="tone-title">Цитата дня</h3>
+          <p class="tone-subtitle">
+          </p>
+          <p id="random-quote" class="tone-text">
+            Некоторые тайны существуют лишь затем, чтобы мы их искали.
+          </p>
+          <button id="quote-btn" class="tone-btn">Получить цитату</button>
+        </div>
+      </div>
+
+      <!-- Левая колонка снизу: генератор настроения -->
+      <div class="tone-column tone-column-bottom">
+        <div class="tone-box tone-box-big">
+          <h3 class="tone-title">Какое у вас сегодня академическое настроение?</h3>
+          <p class="tone-subtitle">
+          </p>
+          <p id="mood-result" class="tone-text">
+          </p>
+          <button id="mood-btn" class="tone-btn">Определить настроение</button>
+        </div>
+      </div>
+
+      <!-- Правая колонка снизу: Девятый дом + Шестёрка Атласа -->
+      <div class="books-column">
+        <article class="book-card">
+          <a href="{% url 'book_devyatyi_dom' %}" class="book-card-link">
+            <h3 class="book-title">“Девятый дом”</h3>
+            <div class="book-author">Ли Бардуго</div>
+            <div class="book-content">
+              <img src="{% static 'img/devyatyi-dom.jpg' %}" alt="Девятый дом" class="book-cover">
+              <p class="book-text">
+                В мире тайных обществ элитного Йельского университета магия и власть переплетаются.
+                Следите за героиней, которая вступает в опасный клуб, чтобы раскрыть кровавые секреты
+                прошлого и выжить в мире загадок и ужасов.
+              </p>
+            </div>
+          </a>
+        </article>
+
+        <article class="book-card">
+          <a href="{% url 'book_shesterka' %}" class="book-card-link">
+            <h3 class="book-title">“Шестёрка Атласа”</h3>
+            <div class="book-author">Оливи Блэйк</div>
+            <div class="book-content">
+              <img src="{% static 'img/shesterka-atlasa.jpg' %}" alt="Шестёрка Атласа" class="book-cover">
+              <p class="book-text">
+                История о группе одарённых магов, изучающих тайны прошлого и плетущих интриги
+                в стенах закрытого общества. Каждый выбор — шаг по лезвию между властью
+                и самоуничтожением.
+              </p>
+            </div>
+          </a>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-bottom-call">
+  <div class="section-bottom-bg"></div>
+  <div class="section-bottom-overlay"></div>
+
+  <div class="section-bottom-inner">
+    <p class="section-bottom-text">
+      Исследуйте книги, погрузитесь в мир мыслей и чувств, и откройте для себя тёмную сторону
+      академической жизни — ту, где знания становятся искушением.
+    </p>
+
+    <a href="{% url 'about' %}" class="bottom-link">О жанре</a>
+  </div>
+</section>
+
+{% endblock %}
+
+

@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>{% block title %}dark academia — эстетика знания и тайн{% endblock %}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Cormorant+Garamond:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+<header class="site-header">
+  <div class="header-inner">
+    <nav class="main-nav">
+      <div class="nav-group nav-group-left">
+        <a href="{% url 'news' %}" class="nav-link{% if request.resolver_match.url_name == 'news' %} active{% endif %}">Статьи</a>
+        <a href="{% url 'about' %}" class="nav-link{% if request.resolver_match.url_name == 'about' %} active{% endif %}">О жанре</a>
+      </div>
+
+      <a href="{% url 'index' %}" class="logo">dark academia</a>
+
+      <div class="nav-group nav-group-right">
+        <a href="{% url 'books' %}" class="nav-link{% if request.resolver_match.url_name == 'books' %} active{% endif %}">Книги</a>
+        <a href="{% url 'authors' %}" class="nav-link{% if request.resolver_match.url_name == 'authors' %} active{% endif %}">Авторы</a>
+      </div>
+
+      <button class="nav-toggle" aria-label="Открыть меню">
+        <span></span><span></span><span></span>
+      </button>
+
+      <div class="nav-mobile-panel">
+        <a href="{% url 'news' %}">Статьи</a>
+        <a href="{% url 'about' %}">О жанре</a>
+        <a href="{% url 'books' %}">Книги</a>
+        <a href="{% url 'authors' %}">Авторы</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<div class="page-wrapper">
+  {% block content %}{% endblock %}
+</div>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <span>© 2026 dark academia</span>
+    <a href="{% url 'about_site' %}" class="footer-link">О нас</a>
+  </div>
+</footer>
+
+<script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>
