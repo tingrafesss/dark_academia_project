@@ -15,7 +15,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # 'core',   # Временно отключаем, чтобы не было ошибки
+    'core',  
 ]
 
 MIDDLEWARE = [
