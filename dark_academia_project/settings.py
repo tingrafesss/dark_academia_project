@@ -29,7 +29,8 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'urls'
+ROOT_URLCONF = 'dark_academia_project.urls'
+WSGI_APPLICATION = 'dark_academia_project.wsgi.application'
 
 TEMPLATES = [
     {
