@@ -1,4 +1,5 @@
 import os
+import sys
 from pathlib import Path
 
 # Корень проекта (папка dark_academia_project, где лежит manage.py)
