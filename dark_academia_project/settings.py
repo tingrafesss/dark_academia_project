@@ -9,10 +9,16 @@ sys.path.append(str(BASE_DIR))
 SECRET_KEY = 'django-insecure-dark-academia-test-key'
 
 # Для отладки оставляем True, но на живом сайте потом поменяешь на False
-DEBUG = True
+DEBUG = False
 
 # Разрешаем все домены для Timeweb
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = [
+    'darkacademia.ru', 
+    'www.darkacademia.ru', 
+    'tingrafesss-dark-academia-project-2b63.twc1.net', 
+    'localhost', 
+    '127.0.0.1'
+]
 
 # Приложения
 INSTALLED_APPS = [
