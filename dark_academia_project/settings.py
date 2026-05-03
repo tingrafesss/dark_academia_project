@@ -1,23 +1,18 @@
 import os
 from pathlib import Path
 
+# Корень проекта (папка dark_academia_project, где лежит manage.py)
 BASE_DIR = Path(__file__).resolve().parent
-
-STATIC_URL = 'static/'
-
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
-]
-
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 SECRET_KEY = 'django-insecure-dark-academia-test-key'
 
+# Для отладки оставляем True, но на живом сайте потом поменяешь на False
 DEBUG = True
-ALLOWED_HOSTS = ['*']  # Временно разрешаем все домены
 
+# Разрешаем все домены для Timeweb
+ALLOWED_HOSTS = ['*']
+
+# Приложения
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -25,12 +20,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'core',  
+    'core',  # твое приложение
 ]
 
+# Middleware (Whitenoise СТРОГО на втором месте)
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',  # ДОБАВИТЬ для статики
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -45,7 +41,7 @@ WSGI_APPLICATION = 'wsgi.application'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'], # Добавил на случай, если у тебя есть общая папка templates
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -58,8 +54,6 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'wsgi.application'
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -67,6 +61,7 @@ DATABASES = {
     }
 }
 
+# Отключаем валидаторы для тестов (чтобы не ругался на простые пароли)
 AUTH_PASSWORD_VALIDATORS = []
 
 LANGUAGE_CODE = 'ru-ru'
@@ -74,12 +69,13 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_TZ = True
 
-STATIC_URL = '/static/'  # добавил слеш в начале
-STATIC_ROOT = BASE_DIR / 'staticfiles'  # ДОБАВИТЬ — папка для собранной статики
-STATICFILES_DIRS = [
-    BASE_DIR / 'static',
-]
-
+# --- НАСТРОЙКИ СТАТИКИ (БЕЗ ПОВТОРОВ) ---
+STATIC_URL = '/static/'
+# Папка, где лежат файлы (CSS, картинки) прямо сейчас
+STATICFILES_DIRS = [BASE_DIR / 'static']
+# Папка, куда Django соберет всё для работы сайта (создастся сама)
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+# Магия для работы статики на хостинге
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
