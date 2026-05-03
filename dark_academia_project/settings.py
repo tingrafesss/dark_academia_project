@@ -3,6 +3,7 @@ from pathlib import Path
 
 # Корень проекта (папка dark_academia_project, где лежит manage.py)
 BASE_DIR = Path(__file__).resolve().parent
+sys.path.append(str(BASE_DIR))
 
 SECRET_KEY = 'django-insecure-dark-academia-test-key'
 
