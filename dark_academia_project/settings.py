@@ -3,6 +3,9 @@ import os
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+STATIC_URL = 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 SECRET_KEY = 'django-insecure-dark-academia-test-key'
 
 DEBUG = True
